@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akil Srirama | Engineering portfolio</title>
+<meta name="description" content="Akil Srirama, engineering technologist. Co-op experience in manufacturing, aerospace and energy, plus automation and robotics projects.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230E5E6F'/%3E%3Crect x='14' y='46' width='36' height='5' fill='%23F0A920'/%3E%3Ctext x='32' y='38' font-family='Arial,sans-serif' font-weight='700' font-size='28' fill='%23fff' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ---------- Colours and fonts (change these to restyle the whole site) ---------- */
+:root{
+  --paper:#FAFBF9;
+  --panel:#FFFFFF;
+  --ink:#172326;
+  --ink-soft:#52646A;
+  --brand:#0E5E6F;      /* deep teal */
+  --accent:#F0A920;     /* saffron */
+  --tint:#E4EFF0;
+  --line:#D5DEDF;
+  --sq-dark:#BCD6DA;
+  --sq-light:#F3F7F7;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1A1D; --panel:#13262A; --ink:#E8F0F0; --ink-soft:#9DB3B7;
+    --brand:#62C3D2; --accent:#F4B63A; --tint:#163035; --line:#24393E; --sq-dark:#24454C; --sq-light:#1B3338;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1A1D; --panel:#13262A; --ink:#E8F0F0; --ink-soft:#9DB3B7;
+  --brand:#62C3D2; --accent:#F4B63A; --tint:#163035; --line:#24393E; --sq-dark:#24454C; --sq-light:#1B3338;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:clip;transition:background .3s,color .3s;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+p{margin:0 0 1em;max-width:66ch}
+ul{margin:0;padding:0;list-style:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+
+/* ---------- Top bar ---------- */
+.top{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:22px;min-height:56px}
+.top nav{margin-left:auto}
+.top .me{font-family:var(--display);font-weight:700;font-size:22px;text-decoration:none;letter-spacing:.01em}
+.top nav{display:flex;gap:22px;flex-wrap:wrap}
+.top nav a{font-size:15px;font-weight:500;text-decoration:none;color:var(--ink-soft);padding:6px 0}
+.top nav a:hover{color:var(--brand)}
+.top nav a.active{color:var(--ink);box-shadow:0 2px 0 var(--accent)}
+.theme{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.theme:hover{border-color:var(--brand)}
+.theme span{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%);transition:transform .4s}
+:root[data-theme="dark"] .theme span{transform:rotate(180deg)}
+
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 56px;position:relative;isolation:isolate}
+.hero::before{
+  content:"";position:absolute;z-index:-1;inset:0 -32px;
+  background-image:radial-gradient(var(--sq-dark) 1.3px,transparent 1.4px);background-size:24px 24px;
+  -webkit-mask-image:linear-gradient(115deg,transparent 35%,#000 100%);mask-image:linear-gradient(115deg,transparent 35%,#000 100%);
+  opacity:.9;
+}
+.hero h1::after{content:"";display:block;height:8px;width:min(180px,40%);background:var(--accent);margin-top:18px;transform-origin:0 50%;animation:grow .7s .7s cubic-bezier(.2,.7,.2,1) both}
+.avail{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:15.5px;margin:0 0 30px;padding:7px 14px 7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel);animation:rise .5s .3s both}
+.avail i{width:10px;height:10px;border-radius:50%;background:#2E9E6B;box-shadow:0 0 0 0 rgba(46,158,107,.6);animation:pulse 2.2s infinite}
+.hero h1{
+  font-family:var(--display);font-weight:700;line-height:.92;margin:0 0 22px;
+  font-size:clamp(60px,11vw,136px);letter-spacing:-.005em;
+}
+.ask{font-weight:600;font-size:18px;margin:0 0 12px}
+.focus{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.focus button{
+  font:500 15px var(--body);color:var(--brand);background:none;cursor:pointer;
+  border:2px solid var(--brand);border-radius:999px;padding:8px 16px;
+}
+.focus button:hover{background:var(--tint)}
+.focus button[aria-pressed="true"]{background:var(--brand);color:var(--paper)}
+.pitch{
+  background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent);
+  padding:20px 24px;font-size:clamp(18px,2vw,21px);line-height:1.5;max-width:64ch;margin:0 0 10px;min-height:5.2em;
+}
+.pitch-note{font-size:14.5px;color:var(--ink-soft);margin:0 0 28px;min-height:1.6em}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-block;font:600 16px var(--body);text-decoration:none;cursor:pointer;
+  padding:12px 20px;border:2px solid var(--brand);border-radius:4px;background:none;color:var(--brand);
+}
+.btn:hover{background:var(--tint)}
+.btn.solid{background:var(--brand);color:var(--paper)}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:default}
+
+/* ---------- Sections ---------- */
+section{padding:56px 0;border-top:3px solid var(--brand);scroll-margin-top:56px}
+section h2{font-family:var(--display);font-weight:600;font-size:clamp(36px,5vw,52px);line-height:1;margin:0 0 32px}
+
+.about{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start}
+.facts{border-top:2px solid var(--ink)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts span:first-child{color:var(--ink-soft);white-space:nowrap}
+.facts span:last-child{text-align:right;font-weight:500}
+
+/* ---------- Experience ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0 32px;padding:0 0 56px}
+.stats li{border-top:3px solid var(--ink);padding-top:14px}
+.stats strong{display:block;font-family:var(--display);font-weight:700;font-size:clamp(48px,6vw,72px);line-height:1;color:var(--brand);font-variant-numeric:tabular-nums}
+.stats span{display:block;font-size:15px;color:var(--ink-soft);margin-top:6px;max-width:24ch}
+
+.timeline{position:relative}
+.track{position:absolute;left:205px;top:10px;bottom:0;width:2px;background:var(--line)}
+.track i{display:block;width:100%;height:0;background:var(--brand)}
+.job{display:grid;grid-template-columns:190px 1fr;gap:32px;padding:0 0 40px;position:relative}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:198px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--line);z-index:1;transition:background .3s,border-color .3s,transform .3s}
+.job.reached::before{background:var(--accent);border-color:var(--brand);transform:scale(1.25)}
+.job .when{font:500 14px var(--mono);color:var(--ink-soft);padding-top:6px}
+.job h3{font-family:var(--display);font-weight:600;font-size:30px;line-height:1.1;margin:0}
+.job .where{color:var(--brand);margin:2px 0 14px;font-weight:600}
+.points li{position:relative;padding-left:22px;margin-bottom:8px;max-width:70ch;transition:color .2s}
+.points li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--brand);transition:all .2s}
+
+/* ---------- "What are you hiring for" highlighting ---------- */
+.focused .points li{color:var(--ink-soft)}
+.focused .points li.hit{color:var(--ink);font-weight:500}
+.focused .points li.hit::before{background:var(--accent);height:10px;width:10px;top:.48em;border-radius:50%}
+.fit{display:none;font:600 12px var(--body);vertical-align:middle;margin-left:8px;padding:3px 9px;border-radius:999px;background:var(--accent);color:#172326;white-space:nowrap;letter-spacing:0}
+.hit > h3 .fit,.hit h3 .fit{display:inline-block}
+.focused .skills .chips li{color:var(--ink-soft)}
+.focused .skills > div.hit{box-shadow:inset 5px 0 0 var(--accent);padding-left:16px}
+.focused .skills > div.hit .chips li{color:var(--ink);border-color:var(--accent)}
+
+/* ---------- Projects ---------- */
+.feature{background:var(--panel);border:1px solid var(--line);border-top:5px solid var(--accent);padding:32px;margin-bottom:32px}
+.feature-grid{display:grid;grid-template-columns:1fr 360px;gap:40px;align-items:start}
+.feature h3,.proj h3{font-family:var(--display);font-weight:600;line-height:1.1;margin:0 0 6px}
+.feature h3{font-size:38px}
+.stack{font:400 13px var(--mono);color:var(--ink-soft);margin-bottom:16px}
+.states{display:flex;flex-wrap:wrap;gap:10px 0;margin:18px 0 4px;align-items:center}
+.states li{font:500 13px var(--mono);border:2px solid var(--brand);padding:5px 12px;border-radius:999px;background:var(--paper);transition:background .25s,border-color .25s,color .25s}
+.states li + li{margin-left:18px;position:relative}
+.states li + li::before{content:"";position:absolute;left:-18px;top:50%;width:16px;height:2px;background:var(--brand)}
+.states li.cur{background:var(--accent);border-color:var(--accent);color:#172326}
+.states-note{font-size:14.5px;color:var(--ink-soft);margin:14px 0 0}
+
+.sim svg{display:block;width:100%;height:auto}
+.sim .sq-l{fill:var(--sq-light)}
+.sim .sq-d{fill:var(--sq-dark)}
+.sim .frame{fill:none;stroke:var(--brand);stroke-width:3}
+.sim .pc-w{fill:#FAFBF9;stroke:#172326;stroke-width:2}
+.sim .pc-b{fill:#172326;stroke:var(--ink);stroke-width:2}
+.sim .pt{font:600 13px var(--body);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.sim .pt-w{fill:#172326}
+.sim .pt-b{fill:#FAFBF9}
+.sim .beam{stroke:var(--brand);stroke-width:4;opacity:.8}
+.sim .rail-side{stroke:var(--brand);stroke-width:2;stroke-dasharray:4 4}
+.sim .carriage{fill:none;stroke:var(--brand);stroke-width:3}
+.sim .carriage.on{stroke:var(--accent);stroke-width:4}
+.sim .magnet{fill:var(--brand);transition:fill .2s}
+.sim .magnet.on{fill:var(--accent)}
+.sim .scan{fill:var(--accent);opacity:.6}
+.sim .hl{fill:none;stroke:var(--brand);stroke-width:3}
+.sim .target{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:6 4}
+.sim-bar{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.sim-status{font-size:14.5px;color:var(--ink-soft);margin:0;flex:1 1 180px}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.proj{padding:26px 0;border-top:1px solid var(--line)}
+.proj h3{font-size:27px}
+.proj p{font-size:16px;margin-bottom:0}
+.proj .ill{transition:border-color .2s,transform .3s}
+.proj:hover .ill{border-color:var(--brand);transform:translateY(-3px)}
+figure.media{margin:0 0 18px}
+figure.media img,figure.media video{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.ill{display:block;width:100%;height:150px;background:var(--tint);border:1px solid var(--line);color:var(--brand)}
+.ill .s{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ill .thin{fill:none;stroke:var(--line);stroke-width:1}
+.ill .amber{fill:var(--accent);stroke:none}
+.ill .amber-s{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+.ill .tint{fill:currentColor;opacity:.15;stroke:none}
+
+/* ---------- Skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.skills > div{padding:18px 0;border-bottom:1px solid var(--line);transition:box-shadow .2s,padding .2s}
+.skills h3{font:600 16px var(--body);margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips li{font-size:14px;line-height:1.3;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--panel);transition:border-color .2s,color .2s,background .2s}
+
+/* ---------- Education ---------- */
+.school{padding:20px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.school:first-of-type{border-top:0;padding-top:0}
+.school h3{font-family:var(--display);font-weight:600;font-size:28px;margin:0;line-height:1.1}
+.school p{margin:4px 0 0;color:var(--ink-soft)}
+.school .when{font:500 14px var(--mono);color:var(--ink-soft)}
+.courses{margin-top:28px;font-size:15.5px;color:var(--ink-soft);max-width:none}
+.courses strong{color:var(--ink)}
+
+/* ---------- Contact ---------- */
+#contact{background:var(--brand);color:var(--paper);border-top:0;padding:72px 0;box-shadow:0 0 0 100vmax var(--brand);clip-path:inset(0 -100vmax)}
+#contact p{font-size:19px}
+#contact a:focus-visible{outline-color:var(--paper)}
+.contact-big{font-family:var(--display);font-weight:600;font-size:clamp(30px,6vw,64px);line-height:1.05;word-break:break-word;color:var(--paper);text-decoration-color:var(--accent);text-decoration-thickness:4px;text-underline-offset:8px}
+.contact-big:hover{text-decoration-thickness:7px}
+#contact .btn{border-color:var(--paper);color:var(--paper)}
+#contact .btn:hover{background:rgba(255,255,255,.14)}
+#contact .btn.solid{background:var(--paper);color:var(--brand)}
+#contact .btn.solid:hover{background:var(--accent);border-color:var(--accent);color:#172326}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+footer{padding:20px 0;font-size:14px;color:var(--ink-soft)}
+
+/* ---------- Motion ---------- */
+@keyframes reveal{from{clip-path:inset(0 0 100% 0);transform:translateY(40px)}to{clip-path:inset(-10% 0 -10% 0);transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.35)}100%{transform:scale(1)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,158,107,.55)}70%{box-shadow:0 0 0 9px rgba(46,158,107,0)}100%{box-shadow:0 0 0 0 rgba(46,158,107,0)}}
+@keyframes flash{0%{background:var(--accent)}100%{background:transparent}}
+.hero h1{animation:reveal .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .ask{animation:rise .5s .4s both}
+.focus button{animation:rise .45s both;animation-delay:calc(.5s + var(--i,0) * .06s)}
+.pitch{animation:rise .55s .9s both;transition:opacity .18s,transform .18s}
+.pitch.swap{opacity:0;transform:translateY(6px)}
+.pitch-note,.actions{animation:rise .55s 1.05s both}
+.focused .points li.hit::before{animation:pop .35s both}
+.hit h3 .fit{animation:pop .3s both}
+.flash{animation:flash 1.4s ease-out}
+.jump{font:600 14.5px var(--body);color:var(--brand);background:none;border:0;padding:0;margin-left:6px;cursor:pointer;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+.ill .dot-in{opacity:0;transition:opacity .4s}
+.ill.drawn .dot-in{opacity:1}
+.ill.drawn .tint.dot-in{opacity:.15}
+
+/* ---------- Small screens ---------- */
+@media (max-width:900px){
+  .feature-grid{grid-template-columns:1fr;gap:24px}
+  .sim{max-width:420px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .top nav{gap:14px}
+  .top nav a{font-size:14px}
+  .top .me{display:none}
+  .hero{padding:40px 0}
+  .pitch{padding:16px 18px}
+  section{padding:40px 0}
+  .about,.grid,.skills{grid-template-columns:1fr;gap:0}
+  .about{gap:28px}
+  .job{grid-template-columns:1fr;gap:6px;padding-left:28px}
+  .track{left:5px}
+  .job::before{left:-2px;top:6px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:24px 20px;padding-bottom:40px}
+  .top nav a.opt{display:none}
+  .avail{font-size:14px;margin-bottom:24px}
+  .hero::before{inset:0 -18px}
+  .feature{padding:22px 18px}
+  .states{gap:8px}
+  .states li + li{margin-left:0}
+  .states li + li::before{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="progress" aria-hidden="true"></div>
+  <div class="wrap">
+    <a class="me" href="#top">Akil Srirama</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a class="opt" href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme" type="button" id="theme" aria-label="Switch between light and dark mode"><span></span></button>
+  </div>
+</div>
+
+<div class="wrap" id="top">
+
+  <header class="hero">
+    <h1>Akil Srirama</h1>
+    <p class="avail"><i></i>Available full-time from January 2027</p>
+
+    <p class="ask" id="ask">What are you hiring for?</p>
+    <div class="focus" role="group" aria-labelledby="ask">
+      <button type="button" data-focus="all" aria-pressed="true">Show me everything</button>
+      <button type="button" data-focus="controls" aria-pressed="false">Automation and controls</button>
+      <button type="button" data-focus="quality" aria-pressed="false">Quality</button>
+      <button type="button" data-focus="manufacturing" aria-pressed="false">Manufacturing and process</button>
+      <button type="button" data-focus="design" aria-pressed="false">Design and CAD</button>
+      <button type="button" data-focus="project" aria-pressed="false">Project coordination</button>
+    </div>
+    <p class="pitch" id="pitch" aria-live="polite"></p>
+    <p class="pitch-note" id="pitch-note"></p>
+
+    <div class="actions">
+      <a class="btn solid" href="assets/Akil_Srirama_Resume.pdf" download>Download resume</a>
+      <a class="btn" href="mailto:akilsrirama2004@gmail.com">Email me</a>
+      <a class="btn" href="https://linkedin.com/in/akilsrirama">LinkedIn</a>
+    </div>
+  </header>
+
+  <ul class="stats" aria-label="At a glance">
+    <li><strong data-count="16" data-suffix="+">16+</strong><span>months on site, across three co-op terms</span></li>
+    <li><strong data-count="3">3</strong><span>industries: energy, aerospace, manufacturing</span></li>
+    <li><strong data-count="10" data-suffix="+">10+</strong><span>quality projects with MSA and root cause analysis</span></li>
+    <li><strong data-count="40" data-suffix="+">40+</strong><span>circuit labs, finished with a 90% average</span></li>
+  </ul>
+
+  <main>
+  <section id="about">
+    <h2>About me</h2>
+    <div class="about">
+      <div>
+        <p>I'm in my last term at McMaster, finishing a Bachelor of Automation Engineering Technology. The program is run jointly with Mohawk College, so I graduate with an Advanced Diploma in Chemical Engineering Technology too.</p>
+        <p>I've done three work terms so far: Enbridge's Parkway Station, MHI Canada Aerospace, and eight months at Irving Consumer Products. That adds up to about 16 months on site. Most of my time went into quality work, like checking whether test equipment could be trusted and finding out why things failed.</p>
+        <p>At home I'm usually building something. Right now it's a chessboard that moves its own pieces and a model house run by a PLC. I've also designed and 3D printed replacement parts for machines at two of my co-ops.</p>
+      </div>
+      <ul class="facts">
+        <li><span>Available</span><span>Full-time from January 2027</span></li>
+        <li><span>Open to</span><span>Automation, controls, quality, manufacturing, design</span></li>
+        <li><span>Based in</span><span>Milton, Ontario (GTA)</span></li>
+        <li><span>Certification</span><span>Six Sigma White Belt</span></li>
+        <li><span>Languages</span><span>English, French, ASL, Sinhala</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+    <div class="track" aria-hidden="true"><i></i></div>
+
+    <article class="job">
+      <div class="when">Jan 2025 to Aug 2025</div>
+      <div>
+        <h3>Engineering Co-op Student</h3>
+        <div class="where">Irving Consumer Products</div>
+        <ul class="points">
+          <li data-tags="quality manufacturing project">Quality and complaint tracking relied on manual data entry. I rebuilt the reporting in Power BI on top of custom databases, which cut out the retyping and the errors that came with it.</li>
+          <li data-tags="quality manufacturing">Ran measurement system analyses and root cause investigations on test equipment and new machines, on more than 10 projects, to Six Sigma-aligned requirements.</li>
+          <li data-tags="quality">Led a comparison of test results between sites using Z-scores, found where they disagreed, and tested possible causes one at a time until we knew why.</li>
+          <li data-tags="quality manufacturing">Wrote new test procedures and revised SOPs so results didn't depend on who ran the test. Ran lab tests like Bone-Dry Basis Weight and dispersibility, and led handfeel panels.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when">May 2024 to Aug 2024</div>
+      <div>
+        <h3>Quality Engineer Intern</h3>
+        <div class="where">MHI Canada Aerospace</div>
+        <ul class="points">
+          <li data-tags="quality">Investigated problems on aerospace components and traced them to a root cause, so parts met safety and performance standards.</li>
+          <li data-tags="project">Built tracking tools for Airbus contract deliverables so reporting stayed accurate and on time.</li>
+          <li data-tags="quality project">Redesigned the quality control paperwork to cut down on miscommunication between teams.</li>
+          <li data-tags="project quality">Built statistical models and charts that went into executive presentations.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="job">
+      <div class="when">May 2023 to Aug 2023</div>
+      <div>
+        <h3>Chemical Engineer Co-op</h3>
+        <div class="where">Enbridge, Parkway Station</div>
+        <ul class="points">
+          <li data-tags="manufacturing">Worked with the station supervisors on daily operations and facility maintenance.</li>
+          <li data-tags="design project">Updated as-built engineering drawings so they matched what was really on site and met regulatory standards.</li>
+          <li data-tags="project">Reorganized the station's technical records so they could be found quickly for audits and safety presentations.</li>
+          <li data-tags="design manufacturing">Designed and 3D printed replacement parts for heavy machinery, which cut downtime and maintenance costs.</li>
+        </ul>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <article class="feature" data-tags="controls design">
+      <figure class="media" data-media="cxra" data-alt="The CXRA automated chessboard" data-optional></figure>
+      <div class="feature-grid">
+        <div>
+          <h3>A chessboard that moves its own pieces <span class="fit">Fits this role</span></h3>
+          <div class="stack">Chess eXecution Robotic Assembly (CXRA)</div>
+          <p>You play against it like a normal board. A camera reads your move, a chess engine picks a reply, and a motorized gantry carries an electromagnet to the piece and moves it to its new square.</p>
+          <p>I modeled the actuator in SolidWorks and wrote the control logic as six steps that run in order. Splitting it up that way meant I could test and fix one step at a time. Press the button to watch one move.</p>
+          <ul class="states" id="states" aria-label="The six steps, in order">
+            <li>Idle</li><li>Scan</li><li>Validate</li><li>Compute</li><li>Execute</li><li>Reset</li>
+          </ul>
+          <p class="states-note">Built with stepper motors, belt drives, an electromagnet and an ESP32. I'm currently testing the magnet's switching circuit on a separate rig.</p>
+        </div>
+        <div class="sim">
+          <svg id="board" viewBox="-14 -14 348 348" role="img" aria-labelledby="simcap">
+            <g id="squares"></g>
+            <rect class="frame" x="0" y="0" width="320" height="320"/>
+            <line class="rail-side" x1="-8" y1="0" x2="-8" y2="320"/>
+            <line class="rail-side" x1="328" y1="0" x2="328" y2="320"/>
+            <g id="marks"></g>
+            <rect id="scan" class="scan" x="0" y="-10" width="320" height="6" style="display:none"/>
+            <line id="beam" class="beam" x1="-8" x2="328" y1="20" y2="20"/>
+            <rect id="carriage" class="carriage" x="4" y="4" width="32" height="32" rx="3"/>
+            <circle id="magnet" class="magnet" cx="20" cy="20" r="7"/>
+            <g id="pieces"></g>
+          </svg>
+          <div class="sim-bar">
+            <button class="btn solid" type="button" id="play">Play a move</button>
+            <p class="sim-status" id="simcap" aria-live="polite">The arm is parked in the corner.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="grid">
+      <article class="proj" data-tags="controls">
+        <figure class="media" data-media="plc-home" data-alt="PLC smart home automation system">
+          <svg class="ill" viewBox="0 0 320 150" aria-hidden="true">
+            <rect class="s" x="24" y="28" width="104" height="92" rx="3"/>
+            <line class="s" x1="50" y1="28" x2="50" y2="120"/><line class="s" x1="76" y1="28" x2="76" y2="120"/><line class="s" x1="102" y1="28" x2="102" y2="120"/>
+            <circle class="amber" cx="37" cy="42" r="4"/><circle class="amber" cx="63" cy="42" r="4"/><circle class="amber" cx="89" cy="42" r="4"/>
+            <path class="s" d="M128 60 H170 V52 H198"/><path class="s" d="M128 84 H184 V96 H224"/><path class="s" d="M128 108 H160 V122 H262"/>
+            <path class="s" d="M210 70 L250 38 L290 70 V122 H210 Z"/>
+            <rect class="s" x="240" y="94" width="20" height="28"/>
+            <circle class="amber" cx="198" cy="52" r="5"/><circle class="amber" cx="224" cy="96" r="5"/>
+          </svg>
+        </figure>
+        <h3>Smart home run by a PLC <span class="fit">Fits this role</span></h3>
+        <div class="stack">CODESYS, ladder logic, Raspberry Pi GPIO</div>
+        <p>I'm writing the control logic for a model home in ladder logic. I test it in simulation first, then run it on a Raspberry Pi wired to motors, sensors, LEDs and relays. Still in progress.</p>
+      </article>
+      <article class="proj" data-tags="controls">
+        <figure class="media" data-media="mini-home" data-alt="Mini smart home and security system model">
+          <svg class="ill" viewBox="0 0 320 150" aria-hidden="true">
+            <path class="s" d="M100 128 V66 L160 24 L220 66 V128 Z"/>
+            <rect class="s" x="148" y="96" width="24" height="32"/>
+            <rect class="s" x="116" y="76" width="22" height="18"/><rect class="s" x="182" y="76" width="22" height="18"/>
+            <circle class="amber" cx="160" cy="56" r="5"/><circle class="amber" cx="127" cy="110" r="5"/><circle class="amber" cx="193" cy="110" r="5"/>
+            <circle class="amber" cx="234" cy="76" r="4"/><path class="amber-s" d="M234 60 A16 16 0 0 1 250 76"/><path class="amber-s" d="M234 46 A30 30 0 0 1 264 76"/><path class="amber-s" d="M234 32 A44 44 0 0 1 278 76"/>
+            <rect class="s" x="40" y="88" width="34" height="40" rx="3"/><line class="s" x1="74" y1="108" x2="100" y2="108"/>
+          </svg>
+        </figure>
+        <h3>Mini smart home and security system <span class="fit">Fits this role</span></h3>
+        <div class="stack">Dual Arduinos, MQTT, custom HMI</div>
+        <p>A scale model house with a working alarm. Two Arduinos run more than 20 sensors and actuators, and a screen I built logs every event and sends email alerts in real time.</p>
+      </article>
+      <article class="proj" data-tags="design manufacturing">
+        <figure class="media" data-media="tooling" data-alt="3D printed industrial replacement parts">
+          <svg class="ill" viewBox="0 0 320 150" aria-hidden="true">
+            <circle class="s" cx="96" cy="75" r="34"/><circle class="s" cx="96" cy="75" r="12"/>
+            <g class="s" style="stroke-width:9">
+              <line x1="130" y1="75" x2="140" y2="75"/><line x1="120" y1="51" x2="127" y2="44"/><line x1="96" y1="41" x2="96" y2="31"/><line x1="72" y1="51" x2="65" y2="44"/>
+              <line x1="62" y1="75" x2="52" y2="75"/><line x1="72" y1="99" x2="65" y2="106"/><line x1="96" y1="109" x2="96" y2="119"/><line x1="120" y1="99" x2="127" y2="106"/>
+            </g>
+            <path class="s" d="M188 30 V118 H284 V94 H212 V30 Z"/>
+            <g class="thin"><line x1="188" y1="44" x2="212" y2="44"/><line x1="188" y1="58" x2="212" y2="58"/><line x1="188" y1="72" x2="212" y2="72"/><line x1="188" y1="86" x2="212" y2="86"/><line x1="188" y1="106" x2="284" y2="106"/></g>
+            <circle class="amber" cx="258" cy="106" r="5"/>
+          </svg>
+        </figure>
+        <h3>Custom industrial tooling <span class="fit">Fits this role</span></h3>
+        <div class="stack">Tinkercad, PrusaSlicer, 3D printing</div>
+        <p>At Enbridge and Irving I designed and printed replacement parts for machines worth over $500k, which cut downtime and maintenance costs.</p>
+      </article>
+      <article class="proj" data-tags="controls design">
+        <figure class="media" data-media="robots" data-alt="Robotic arm and battle bot prototypes">
+          <svg class="ill" viewBox="0 0 320 150" aria-hidden="true">
+            <rect class="s" x="54" y="118" width="70" height="14" rx="2"/>
+            <path class="s" d="M89 118 L89 104 L148 52 L214 78" style="stroke-width:5"/>
+            <circle class="s" cx="89" cy="104" r="9"/><circle class="s" cx="148" cy="52" r="9"/><circle class="s" cx="214" cy="78" r="7"/>
+            <path class="s" d="M214 78 L236 70 M214 78 L236 92"/>
+            <rect class="tint" x="238" y="96" width="30" height="30"/><rect class="s" x="238" y="96" width="30" height="30"/>
+            <circle class="amber" cx="148" cy="52" r="3.5"/>
+          </svg>
+        </figure>
+        <h3>Robotic prototyping <span class="fit">Fits this role</span></h3>
+        <div class="stack">Arduino IDE, Raspberry Pi</div>
+        <p>Robot arms, cranes and battle bots that I wired and programmed myself. I also built a prototype mobility aid for seniors that uses a pressurized actuator.</p>
+      </article>
+      <article class="proj" data-tags="controls">
+        <figure class="media" data-media="circuits" data-alt="Circuit lab bench setup">
+          <svg class="ill" viewBox="0 0 320 150" aria-hidden="true">
+            <rect class="s" x="30" y="22" width="260" height="106" rx="4"/>
+            <g class="thin"><line x1="30" y1="48" x2="290" y2="48"/><line x1="30" y1="75" x2="290" y2="75"/><line x1="30" y1="102" x2="290" y2="102"/>
+            <line x1="82" y1="22" x2="82" y2="128"/><line x1="134" y1="22" x2="134" y2="128"/><line x1="186" y1="22" x2="186" y2="128"/><line x1="238" y1="22" x2="238" y2="128"/></g>
+            <path class="amber-s" d="M30 75 Q56 32 82 75 T134 75 T186 75 T238 75 T290 75"/>
+            <path class="s" d="M30 100 H82 V50 H134 V100 H186 V50 H238 V100 H290" style="stroke-width:2"/>
+          </svg>
+        </figure>
+        <h3>Circuitry and signal analysis <span class="fit">Fits this role</span></h3>
+        <div class="stack">Analog Discovery 2, oscilloscopes, function generators</div>
+        <p>Over 40 labs designing, measuring and fixing circuits. I finished with a 90% average.</p>
+      </article>
+      <article class="proj" data-tags="design controls">
+        <figure class="media" data-media="sump" data-alt="3D printed sump pump water level sensor">
+          <svg class="ill" viewBox="0 0 320 150" aria-hidden="true">
+            <path class="tint" d="M50 80 Q70 72 90 80 T130 80 T170 80 V128 H50 Z"/>
+            <path class="s" d="M50 22 V128 H170 V22"/>
+            <path class="s" d="M50 80 Q70 72 90 80 T130 80 T170 80"/>
+            <line class="s" x1="110" y1="22" x2="110" y2="70"/><circle class="s" cx="110" cy="78" r="9"/>
+            <rect class="s" x="222" y="48" width="70" height="48" rx="3"/>
+            <circle class="amber" cx="238" cy="62" r="5"/>
+            <path class="s" d="M110 22 H200 V72 H222"/>
+          </svg>
+        </figure>
+        <h3>Sump pump water level sensor <span class="fit">Fits this role</span></h3>
+        <div class="stack">3D printing, Raspberry Pi, local HMI</div>
+        <p>I designed and printed a water level sensor for the sump pump at home and hooked it to a Raspberry Pi with a small display.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div data-tags="controls"><h3>PLCs and HMIs</h3><ul class="chips"><li>Allen-Bradley (Studio 5000)</li><li>Siemens (TIA Portal)</li><li>Omron</li><li>CODESYS</li><li>Ladder logic</li><li>HMI screens</li></ul></div>
+      <div data-tags="controls manufacturing"><h3>Industrial networks and control</h3><ul class="chips"><li>Modbus</li><li>EtherNet/IP</li><li>SCADA</li><li>PID tuning</li><li>Process instrumentation</li><li>P&amp;IDs</li></ul></div>
+      <div data-tags="quality manufacturing"><h3>Quality</h3><ul class="chips"><li>Six Sigma White Belt</li><li>MSA</li><li>Gauge R&amp;R</li><li>Root cause analysis</li><li>SPC</li><li>Cp/Cpk</li><li>SOP writing</li><li>ISO 9001</li></ul></div>
+      <div data-tags="quality project manufacturing"><h3>Data and reporting</h3><ul class="chips"><li>Power BI</li><li>Excel with VBA</li><li>SQL</li><li>Statistical modeling</li></ul></div>
+      <div data-tags="design manufacturing"><h3>CAD and making things</h3><ul class="chips"><li>SolidWorks</li><li>AutoCAD</li><li>Tinkercad</li><li>PrusaSlicer</li><li>3D printing</li><li>Engineering drawings</li></ul></div>
+      <div data-tags="controls"><h3>Programming and electronics</h3><ul class="chips"><li>C++</li><li>Arduino</li><li>Raspberry Pi</li><li>Verilog</li><li>MQTT</li><li>Circuit design</li><li>Digital logic</li><li>Oscilloscopes</li><li>Servo and VFD motion control</li></ul></div>
+      <div data-tags="project"><h3>Project and business</h3><ul class="chips"><li>Project management</li><li>Engineering economics</li><li>Operations management</li><li>Technical documentation</li><li>Deliverable tracking</li></ul></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="school">
+      <div><h3>McMaster University</h3><p>Bachelor of Automation Engineering Technology, Industrial Systems stream</p></div>
+      <div class="when">Sep 2022 to Dec 2026</div>
+    </div>
+    <div class="school">
+      <div><h3>Mohawk College</h3><p>Advanced Diploma in Chemical Engineering Technology, with a Business Management Certificate</p></div>
+      <div class="when">Sep 2022 to Dec 2026</div>
+    </div>
+    <p class="courses"><strong>Courses I'd point to:</strong> Advanced PLC Programming and Control, Industrial Networks and Controllers, Advanced Control Systems, Motion Control and Robotics, Instrumentation and Control, Quality Control and Assurance Methods, Engineering Statistics, Digital Electronics, Internet Technologies and Databases, Project Management, Operations Management.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Get in touch</h2>
+    <p>I'm looking for a full-time role in the GTA starting January 2027. Email is the quickest way to reach me.</p>
+    <a class="contact-big" href="mailto:akilsrirama2004@gmail.com">akilsrirama2004@gmail.com</a>
+    <div class="links">
+      <a class="btn" href="https://linkedin.com/in/akilsrirama">LinkedIn</a>
+      <a class="btn solid" href="assets/Akil_Srirama_Resume.pdf" download>Download resume</a>
+    </div>
+  </section>
+  </main>
+
+  <footer>Akil Srirama, Milton, Ontario</footer>
+</div>
+
+<script>
+var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- "What are you hiring for?" ----------
+   To change what a button says, edit the text in PITCH below.
+   To change what gets marked, edit the data-tags on each bullet, project and skill. */
+(function(){
+  var PITCH = {
+    all: "I'm an engineering technologist graduating from McMaster this December. I've done three co-op terms in energy, aerospace and manufacturing, and I build robots and automation projects in my own time.",
+    controls: "I program PLCs from Allen-Bradley, Siemens and Omron, build operator screens, and I've done more than 40 circuit labs on the bench. Most of what I build at home is a control system of some kind.",
+    quality: "Two of my three co-ops were quality roles. I've run measurement system analyses and root cause investigations on more than 10 projects, and I hold a Six Sigma White Belt.",
+    manufacturing: "I've worked on plant floors at Irving and Enbridge. I ran checks on new machinery, wrote test procedures and SOPs, and printed replacement parts to cut downtime.",
+    design: "I design in SolidWorks and AutoCAD. Parts I've drawn and printed have gone onto real machines at Enbridge and Irving, and I've kept engineering drawings matched to what's on site.",
+    project: "I've tracked Airbus deliverables, kept drawings and records ready for audits, and built reports that replaced manual spreadsheets. My degree also covers project management and business."
+  };
+  var NAMES = {controls:'automation and controls', quality:'quality', manufacturing:'manufacturing and process', design:'design and CAD', project:'project coordination'};
+  var pitch = document.getElementById('pitch'), note = document.getElementById('pitch-note');
+  var btns = document.querySelectorAll('.focus button'), first = true;
+  btns.forEach(function(b, i){ b.style.setProperty('--i', i); });
+  pitch.addEventListener('animationend', function(){ pitch.style.animation = 'none'; });
+  var tagged = document.querySelectorAll('[data-tags]');
+  function set(focus){
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.focus === focus ? 'true' : 'false'); });
+    if(first || REDUCED){ pitch.textContent = PITCH[focus]; }
+    else {
+      pitch.classList.add('swap');
+      setTimeout(function(){ pitch.textContent = PITCH[focus]; pitch.classList.remove('swap'); }, 180);
+    }
+    first = false;
+    var on = focus !== 'all', n = 0;
+    document.body.classList.toggle('focused', on);
+    tagged.forEach(function(t){
+      var hit = on && t.dataset.tags.split(' ').indexOf(focus) > -1;
+      t.classList.toggle('hit', hit); if(hit) n++;
+    });
+    if(on){
+      note.textContent = n + ' things that relate to ' + NAMES[focus] + ' are marked in yellow below.';
+      var j = document.createElement('button');
+      j.type = 'button'; j.className = 'jump'; j.textContent = 'Jump to the first one';
+      j.addEventListener('click', function(){
+        var t = document.querySelector('.hit');
+        if(!t) return;
+        t.scrollIntoView({behavior: REDUCED ? 'auto' : 'smooth', block: 'center'});
+        if(!REDUCED){ t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash'); }
+      });
+      note.appendChild(j);
+    } else {
+      note.textContent = 'Pick one and the page will mark the work that matters for that kind of role.';
+    }
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ set(b.dataset.focus); }); });
+  set('all');
+})();
+
+/* ---------- CXRA simulation ---------- */
+(function(){
+  var NS = 'http://www.w3.org/2000/svg';
+  var S = 40;
+  function el(tag, attrs, parent){
+    var e = document.createElementNS(NS, tag);
+    for(var k in attrs) e.setAttribute(k, attrs[k]);
+    if(parent) parent.appendChild(e);
+    return e;
+  }
+  function pos(sq){ // "e4" -> centre point
+    var f = sq.charCodeAt(0) - 97, r = +sq[1];
+    return { x: f*S + S/2, y: (8 - r)*S + S/2 };
+  }
+
+  // Board
+  var sqG = document.getElementById('squares');
+  for(var r = 0; r < 8; r++) for(var f = 0; f < 8; f++){
+    el('rect', {x:f*S, y:r*S, width:S, height:S, 'class':(r+f)%2 ? 'sq-d' : 'sq-l'}, sqG);
+  }
+
+  // Pieces (position after 1.e4 e5, with the human's e7-e5 just played)
+  var setup = [
+    ['K','w','e1'],['Q','w','d1'],['N','w','b1'],['N','w','g1'],['P','w','d2'],['P','w','f2'],['P','w','e4'],
+    ['K','b','e8'],['Q','b','d8'],['N','b','b8'],['N','b','g8'],['P','b','d7'],['P','b','f7'],['P','b','e5']
+  ];
+  var pG = document.getElementById('pieces'), pieces = {};
+  setup.forEach(function(p){
+    var c = pos(p[2]);
+    var g = el('g', {}, pG);
+    el('circle', {cx:0, cy:0, r:13, 'class':'pc-' + p[1]}, g);
+    var t = el('text', {x:0, y:0, 'class':'pt pt-' + p[1]}, g); t.textContent = p[0];
+    g.setAttribute('transform', 'translate(' + c.x + ',' + c.y + ')');
+    pieces[p[2]] = {g:g, x:c.x, y:c.y, home:p[2]};
+  });
+
+  var beam = document.getElementById('beam'), car = document.getElementById('carriage'),
+      mag = document.getElementById('magnet'), scan = document.getElementById('scan'),
+      marks = document.getElementById('marks'), cap = document.getElementById('simcap'),
+      play = document.getElementById('play'), states = document.querySelectorAll('#states li');
+  var HOME = pos('a8'), at = {x:HOME.x, y:HOME.y}, carrying = null, running = false;
+
+  function placeGantry(x, y){
+    at.x = x; at.y = y;
+    beam.setAttribute('y1', y); beam.setAttribute('y2', y);
+    car.setAttribute('x', x - 16); car.setAttribute('y', y - 16);
+    mag.setAttribute('cx', x); mag.setAttribute('cy', y);
+    if(carrying){ carrying.g.setAttribute('transform', 'translate(' + x + ',' + y + ')'); }
+  }
+  function tween(ms, fn){
+    if(REDUCED) ms = Math.min(ms, 120);
+    return new Promise(function(done){
+      var t0 = performance.now();
+      function step(now){
+        var k = Math.min(1, (now - t0) / ms);
+        fn(k < .5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2)/2);
+        if(k < 1) requestAnimationFrame(step); else done();
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  function wait(ms){ return new Promise(function(d){ setTimeout(d, REDUCED ? Math.min(ms, 300) : ms); }); }
+  function moveTo(sq, ms){
+    var from = {x:at.x, y:at.y}, to = typeof sq === 'string' ? pos(sq) : sq;
+    // H-bot style: travel along X, then along Y
+    return tween(ms/2, function(k){ placeGantry(from.x + (to.x - from.x)*k, from.y); })
+      .then(function(){ return tween(ms/2, function(k){ placeGantry(to.x, from.y + (to.y - from.y)*k); }); });
+  }
+  function setState(i, text){
+    states.forEach(function(li, j){ li.classList.toggle('cur', j === i); });
+    cap.textContent = text;
+  }
+  function mark(sq, cls){
+    var c = pos(sq);
+    el('rect', {x:c.x - S/2 + 3, y:c.y - S/2 + 3, width:S - 6, height:S - 6, 'class':cls}, marks);
+  }
+  function resetBoard(){
+    marks.innerHTML = '';
+    var n = pieces.f3 || pieces.g1;
+    if(pieces.f3){ pieces.g1 = pieces.f3; delete pieces.f3; }
+    var c = pos('g1'); pieces.g1.x = c.x; pieces.g1.y = c.y;
+    pieces.g1.g.setAttribute('transform', 'translate(' + c.x + ',' + c.y + ')');
+    carrying = null; mag.classList.remove('on'); car.classList.remove('on');
+    placeGantry(HOME.x, HOME.y);
+  }
+
+  async function run(){
+    if(running) return;
+    running = true; play.disabled = true;
+    resetBoard();
+    setState(0, 'Idle. Waiting for you to move.');
+    await wait(700);
+
+    setState(1, 'Scan. The camera reads the board.');
+    scan.style.display = '';
+    await tween(1300, function(k){ scan.setAttribute('y', -3 + k*320); });
+    scan.style.display = 'none';
+
+    setState(2, 'Validate. Black pushed a pawn two squares, which is legal.');
+    mark('e7', 'hl'); mark('e5', 'hl');
+    await wait(1200);
+
+    setState(3, 'Compute. The engine decides to bring out a knight.');
+    mark('g1', 'target'); mark('f3', 'target');
+    await wait(1200);
+
+    setState(4, 'Execute. The arm travels to the knight.');
+    await moveTo('g1', 1300);
+    mag.classList.add('on'); car.classList.add('on'); cap.textContent = 'Execute. Magnet on, knight picked up.';
+    carrying = pieces.g1; carrying.g.parentNode.appendChild(carrying.g);
+    await wait(500);
+    cap.textContent = 'Execute. Carrying the knight to its new square.';
+    await moveTo('f3', 1000);
+    mag.classList.remove('on'); car.classList.remove('on'); carrying = null;
+    pieces.f3 = pieces.g1; delete pieces.g1;
+    cap.textContent = 'Execute. Magnet off, knight placed.';
+    await wait(500);
+
+    setState(5, 'Reset. The arm goes back to its corner.');
+    marks.innerHTML = '';
+    await moveTo(HOME, 1300);
+
+    setState(-1, 'Done. Your move.');
+    play.textContent = 'Play again';
+    play.disabled = false; running = false;
+  }
+
+  placeGantry(HOME.x, HOME.y);
+  play.addEventListener('click', run);
+  if(!REDUCED && 'IntersectionObserver' in window){
+    var once = new IntersectionObserver(function(en){
+      if(en[0].isIntersecting){ once.disconnect(); run(); }
+    }, {threshold:.7});
+    once.observe(document.getElementById('board'));
+  }
+})();
+
+/* ---------- Project media: real photos or videos replace the drawings ----------
+   Drop a file in /assets named after data-media (e.g. cxra.mp4, plc-home.jpg).
+   .mp4 is tried first, then .jpg, .png, .webp. If none exists, the drawing stays. */
+(function(){
+  document.querySelectorAll('figure.media').forEach(function(fig){
+    var name = fig.dataset.media, alt = fig.dataset.alt || '';
+    var optional = fig.hasAttribute('data-optional');
+    function show(node){ fig.innerHTML = ''; fig.appendChild(node); }
+    var imgs = ['jpg','png','webp'];
+    function tryImg(i){
+      if(i >= imgs.length){ if(optional) fig.remove(); return; }
+      var im = new Image();
+      im.alt = alt; im.loading = 'lazy';
+      im.onload = function(){ show(im); };
+      im.onerror = function(){ tryImg(i+1); };
+      im.src = 'assets/' + name + '.' + imgs[i];
+    }
+    var v = document.createElement('video');
+    v.muted = true; v.loop = true; v.playsInline = true; v.controls = true;
+    v.autoplay = !REDUCED;
+    v.setAttribute('aria-label', alt);
+    v.onloadeddata = function(){ show(v); };
+    v.onerror = function(){ tryImg(0); };
+    v.src = 'assets/' + name + '.mp4';
+  });
+})();
+
+/* ---------- Scroll progress along the top bar ---------- */
+(function(){
+  var bar = document.querySelector('.progress'), ticking = false;
+  function draw(){
+    var max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+    ticking = false;
+  }
+  addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(draw); } }, {passive:true});
+  addEventListener('resize', draw); draw();
+})();
+
+/* ---------- Project drawings sketch themselves the first time they scroll into view ---------- */
+(function(){
+  if(REDUCED || !('IntersectionObserver' in window)) return;
+  var ills = document.querySelectorAll('.ill');
+  ills.forEach(function(svg){
+    svg.querySelectorAll('.amber, .tint').forEach(function(d){ d.classList.add('dot-in'); });
+    var lines = svg.querySelectorAll('.s, .amber-s, g.s > *');
+    lines.forEach(function(el){
+      if(typeof el.getTotalLength !== 'function') return;
+      var len = Math.ceil(el.getTotalLength()) + 2;
+      el.style.strokeDasharray = len;
+      el.style.strokeDashoffset = len;
+    });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var svg = e.target, i = 0;
+      svg.querySelectorAll('.s, .amber-s, g.s > *').forEach(function(el){
+        if(typeof el.getTotalLength !== 'function') return;
+        el.style.transition = 'stroke-dashoffset 1.1s ease ' + (i++ * 0.07) + 's';
+        el.style.strokeDashoffset = 0;
+      });
+      setTimeout(function(){ svg.classList.add('drawn'); }, 600 + i * 70);
+      io.unobserve(svg);
+    });
+  }, {threshold: .35});
+  ills.forEach(function(svg){ io.observe(svg); });
+})();
+
+/* ---------- Light / dark switch ---------- */
+(function(){
+  var root = document.documentElement, btn = document.getElementById('theme');
+  btn.addEventListener('click', function(){
+    var now = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var next = now === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
+})();
+
+/* ---------- Top bar shows which section you're in ---------- */
+(function(){
+  var links = {}, secs = document.querySelectorAll('main section'), ticking = false;
+  document.querySelectorAll('.top nav a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+  function draw(){
+    var cur = '';
+    secs.forEach(function(sec){ if(sec.getBoundingClientRect().top <= innerHeight * 0.4) cur = sec.id; });
+    if(innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = 'contact';
+    for(var k in links) links[k].classList.toggle('active', k === cur);
+    ticking = false;
+  }
+  addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(draw); } }, {passive:true});
+  addEventListener('resize', draw); draw();
+})();
+
+/* ---------- Numbers count up once ---------- */
+(function(){
+  var nums = document.querySelectorAll('.stats strong');
+  if(REDUCED || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      io.unobserve(e.target);
+      var el = e.target, to = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now();
+      (function tick(now){
+        var k = Math.min(1, (now - t0) / 900), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        el.textContent = v + (k === 1 ? suf : '');
+        if(k < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, {threshold:.6});
+  nums.forEach(function(n){ io.observe(n); });
+})();
+
+/* ---------- Experience timeline fills as you scroll ---------- */
+(function(){
+  var tl = document.querySelector('.timeline'); if(!tl) return;
+  var fill = tl.querySelector('.track i'), jobs = tl.querySelectorAll('.job'), ticking = false;
+  function draw(){
+    var r = tl.getBoundingClientRect();
+    var px = Math.max(0, Math.min(r.height, innerHeight * 0.55 - r.top));
+    fill.style.height = px + 'px';
+    jobs.forEach(function(j){ j.classList.toggle('reached', j.offsetTop <= px); });
+    ticking = false;
+  }
+  addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(draw); } }, {passive:true});
+  addEventListener('resize', draw); draw();
+})();
+</script>
+</body>
+</html>
